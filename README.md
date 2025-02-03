@@ -46,15 +46,21 @@ This project is hosted on ... Netlify <a target='_blank' src='https://color-game
 - Alternatively, connect your Git repository to Netlify for continuous deployment.
 
 ### Usage
-**Objective:** Guess the target color displayed in the box.
 
-**How to Play:**
-- Look at the colored box at the top of the game.
-- Click one of the six color option buttons below the box.
-- The game will display a message indicating whether your guess was correct or wrong.
-- If correct, your score will increase.
-- Click the "New Game" button to play another round.
-- Click the "Reset" button to reset the score and the current round to the initial state.
+**Objective:**  
+Guess the target color displayed in the box.
+
+#### During the Game:
+
+- The board is set up with a random target color and six color option buttons.
+- If you select a wrong color, you will see a “Wrong, try again!” message and you can continue guessing.
+- When you select the correct color, you will see a “Correct!” message, your score increments, and all color buttons become disabled so that no further guesses can be made for that round.
+
+#### New Game Button & Score Reset:
+
+- Clicking the **New Game** button resets the board for a new round.
+- Next to the **New Game** button is a **Reset Score** checkbox. If you check this box before starting a new game, your score will be reset to 0 when you click **New Game**. If the checkbox is not selected, your score carries over into the new round.
+- After clicking **New Game**, the board is reinitialized with a new target color and active color options, allowing you to continue playing.
 
 ### Code Overview
 - **HTML:** Defines the structure of the game.
