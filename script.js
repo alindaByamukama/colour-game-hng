@@ -4,6 +4,7 @@ const COLORS = ['red', 'blue', 'green', 'yellow', 'purple', 'orange'];
 
 let targetColor = '';
 let score = 0;
+let gameOver = false;
 
 // DOM elements
 const colorBox = document.getElementById('targetColor');
@@ -11,7 +12,7 @@ const colorOptionsContainer = document.getElementById('colorOptions');
 const gameStatus = document.querySelector('[data-testid="gameStatus"]');
 const scoreDisplay = document.querySelector('[data-testid="score"]');
 const newGameButton = document.querySelector('[data-testid="newGameButton"]');
-const resetButton = document.querySelector('[data-testid="resetButton"]');
+const resetScoreToggle = document.getElementById('resetScoreToggle');
 
 // Initialize the game
 function initGame() {
@@ -28,13 +29,20 @@ function initGame() {
     const btn = document.createElement('button');
     btn.setAttribute('data-testid', 'colorOption');
     btn.style.backgroundColor = color;
+    btn.disabled = false; 
     btn.addEventListener('click', () => handleGuess(color, btn));
     colorOptionsContainer.appendChild(btn);
     });
+
+    // Set flag to allow new guesses
+    gameOver = false;
 }
 
 // Handle user guesses
 function handleGuess(selectedColor, button) {
+    // If the game round is already over, ignore further guesses
+    if (gameOver) return;
+
     // Clear any previous animations
     button.classList.remove('fade-out', 'celebrate');
     
@@ -43,8 +51,13 @@ function handleGuess(selectedColor, button) {
     gameStatus.style.color = 'green';
     score++;
     scoreDisplay.textContent = score;
+    gameOver = true;
+
     // Add celebration animation to the target box
     colorBox.classList.add('celebrate');
+
+    // Disable all color option buttons so no further guesses can be made
+    disableColorOptions();
     } else {
     gameStatus.textContent = 'Wrong, try again!';
     gameStatus.style.color = 'red';
@@ -58,21 +71,24 @@ function handleGuess(selectedColor, button) {
     }, 500);
 }
 
-// Reset the game state, including score and current round
-function resetGame() {
-    score = 0;
-    scoreDisplay.textContent = score;
-    initGame();
+// Disable all color option buttons
+function disableColorOptions() {
+    const buttons = colorOptionsContainer.querySelectorAll('[data-testid="colorOption"]');
+    buttons.forEach(btn => {
+        btn.disabled = true;
+    });
 }
 
-// Reset the game for a new round
+// New Game button event listener
 newGameButton.addEventListener('click', () => {
-    initGame();
-});
-
-// Event listener for Reset Game button (resets everything)
-resetButton.addEventListener('click', () => {
-    resetGame();
+  // If the reset score checkbox is checked, reset the score
+  if (resetScoreToggle.checked) {
+    score = 0;
+    scoreDisplay.textContent = score;
+    // Optionally, uncheck the box automatically
+    resetScoreToggle.checked = false;
+  }
+  initGame();
 });
 
 // Start the game on initial load
