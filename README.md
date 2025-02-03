@@ -54,6 +54,7 @@ This project is hosted on ... Netlify <a target='_blank' src='https://color-game
 - The game will display a message indicating whether your guess was correct or wrong.
 - If correct, your score will increase.
 - Click the "New Game" button to play another round.
+- Click the "Reset" button to reset the score and the current round to the initial state.
 
 ### Code Overview
 - **HTML:** Defines the structure of the game.
