@@ -89,6 +89,24 @@ body {
     background: #0056b3;
 }
 
+/* Reset Game Button Styling */
+[data-testid="resetButton"] {
+    padding: 10px 20px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 4px;
+    background: #dc3545;
+    color: white;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    margin-top: 10px;
+}
+
+[data-testid="resetButton"]:hover {
+    background: #a71d2a;
+}
+
+
 /* Animations */
 .fade-out {
     animation: fadeOut 0.5s forwards;
