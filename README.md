@@ -34,7 +34,7 @@ To run this project, you only need a web browser (e.g., Chrome, Firefox, Safari)
 - Run a local development server (e.g., using VS Code Live Server extension).
 
 ### Deployment
-This project is hosted on ...
+This project is hosted on ... Netlify <a target='_blank' src='https://color-game-hng.netlify.app/'>HERE</a>.
 
 **Deploying on Vercel:**
 - Create a new project on Vercel.
