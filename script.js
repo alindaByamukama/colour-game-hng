@@ -11,6 +11,7 @@ const colorOptionsContainer = document.getElementById('colorOptions');
 const gameStatus = document.querySelector('[data-testid="gameStatus"]');
 const scoreDisplay = document.querySelector('[data-testid="score"]');
 const newGameButton = document.querySelector('[data-testid="newGameButton"]');
+const resetButton = document.querySelector('[data-testid="resetButton"]');
 
 // Initialize the game
 function initGame() {
