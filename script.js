@@ -57,9 +57,21 @@ function handleGuess(selectedColor, button) {
     }, 500);
 }
 
+// Reset the game state, including score and current round
+function resetGame() {
+    score = 0;
+    scoreDisplay.textContent = score;
+    initGame();
+}
+
 // Reset the game for a new round
 newGameButton.addEventListener('click', () => {
     initGame();
+});
+
+// Event listener for Reset Game button (resets everything)
+resetButton.addEventListener('click', () => {
+    resetGame();
 });
 
 // Start the game on initial load
